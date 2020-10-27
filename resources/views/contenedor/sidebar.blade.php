@@ -122,6 +122,13 @@
                             </li>
                         @endif
 
+                        <li class="@if (Request::is('intranet/user')) active-sub @endif">
+                            <a href=" {{ route('intranet.user.index') }} ">
+                                <i class="fa fa-database text-orange"></i>
+                                <span class="menu-title">Mi Cuenta</span>
+                            </a>
+                        </li>
+
 
                 </div>
             </div>
