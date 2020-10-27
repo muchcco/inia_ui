@@ -19,7 +19,7 @@ class PerfilController extends Controller
     
 
     public function index(Request $request)
-    {   
+    {
         $usuario = User::from('users as u')
                     ->join('sede as se', 'se.idsede', '=', 'u.id_sede')
                     ->join('roles as rl', 'rl.id', '=', 'u.role_id')
@@ -29,7 +29,17 @@ class PerfilController extends Controller
 
         //dd($usuario);
 
-        return view('intranet.user.index', compact('usuario'));
+        $update = User::from('users as u')
+                    ->join('sede as s', 's.idsede', '=', 'u.id_sede')
+                    ->where('id', Auth()->user()->id)
+                    ->first();
+
+        //dd($update);
+
+        $sedes = Sede::get();
+        $roles = Role::get();
+
+        return view('intranet.user.index', compact('usuario', 'update', 'sedes', 'roles'));
     }
 
 
