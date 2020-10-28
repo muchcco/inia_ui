@@ -16,7 +16,7 @@
 		<div class="panel">
 			<div class="panel-body">
 				<div class="fixed-fluid">
-					<div class="fixed-md-200 pull-sm-left fixed-right-border">
+					<div class="fixed-md-300 pull-sm-left fixed-right-border">
 						@foreach( $usuario as $user )
 						<!-- Simple profile -->
 						<div class="text-center">
@@ -29,27 +29,22 @@
 							</h4>
 							<p class="text-sm text-muted">{{  $user->denominacion }}	</p>
 							
-							<button class="btn btn-block btn-success btn-lg">CONTRASEÑA</button>
+							<button class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#passwor_resed">CONTRASEÑA</button>
 						</div>
 						<hr>
 	
 						<!-- Profile Details -->
 						<p class="pad-ver text-main text-sm text-uppercase text-bold">Sobre Mi</p>
-						<p><i class="demo-pli-map-marker-2 icon-lg icon-fw"></i> {{ $user->nombres }}</p>
-						<p><a href="#" class="btn-link"><i class="demo-pli-internet icon-lg icon-fw"></i>  {{ $user->email }} </a></p>
-						<p><i class="demo-pli-old-telephone icon-lg icon-fw"></i> {{ $user->direccion }} </p>
-						<p class="text-sm text-center"> {{  $user->rol_name }} </p>
+						<p><i class="fa fa-user"></i> {{ $user->nombres }}</p>
+						<p><a href="#" class="btn-link"><i class="fa fa-at"></i>  {{ $user->email }} </a></p>
+						<p><i class="fa fa-map"></i> {{ $user->direccion }} </p>
 	
 	
 						<hr>
 						@if( auth()->user()->hasRoles(['admin']))
 							<p class="pad-ver text-main text-sm text-uppercase text-bold">Skills</p>
 							<ul class="list-inline">
-								<li class="tag tag-sm">PHP Programming</li>
-								<li class="tag tag-sm">Marketing</li>
-								<li class="tag tag-sm">Graphic Design</li>
-								<li class="tag tag-sm">Sketch</li>
-								<li class="tag tag-sm">Photography</li>
+								<li class="tag tag-sm">{{  $user->rol_name }}</li>
 							</ul>
 						@endif
 						@if( auth()->user()->hasRoles(['user']))
@@ -101,19 +96,19 @@
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nombre</label>
 												<div class="col-sm-6">
-													<input name="name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->name }} " onkeyup="MayusculaGuiones(this)">
+													<input name="name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->name }}" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Apellidos</label>
 												<div class="col-sm-6">
-													<input name="last_name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->last_name }} " onkeyup="MayusculaGuiones(this)">
+													<input name="last_name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->last_name }}" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Correo</label>
 												<div class="col-sm-6">
-													<input name="email" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->email }} " onkeyup="MayusculaGuiones(this)">
+													<input name="email" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->email }}" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
@@ -122,7 +117,7 @@
 													<select name="role_id" id="" class="form-control sedes">
 														<option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
 														@foreach ($roles as $rol)
-															<option value=" {{ $rol->id }} "> {{ $rol->descripcion }} </option>
+															<option value="{{ $rol->id }}"> {{ $rol->descripcion }} </option>
 														@endforeach
 													</select>													
 												</div>
@@ -182,6 +177,38 @@
 		</div>
 		
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="passwor_resed" tabindex="-1" aria-labelledby="password_resed_one" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="password_resed_one">Cambiar la Contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form class="form" action=" {{ route('intranet.user.password') }} " method="post">
+                {{ csrf_field() }}
+            <div class="modal-body">                
+                <div class="form-group">
+					<label for="recipient-name" class="col-form-label">Contraseña:</label>
+					<input type="password" class="form-control"  name="nombre" >
+				</div> 
+				<div class="form-group">
+					<label for="recipient-name" class="col-form-label">Confirmar contraseña:</label>
+					<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+				</div>                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 
 @endsection

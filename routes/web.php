@@ -92,11 +92,18 @@ Route::group(['middleware' => ['auth']], function () {
 
       //COMBO USUARIO
     
-    Route::get('user', 'PerfilController@index')->name('user.index');
-    Route::post('user/store', 'PerfilController@store')->name(('user.store'));
+      Route::get('user', 'PerfilController@index')->name('user.index');
+      Route::post('user/store', 'PerfilController@store')->name(('user.store'));
+      Route::post('user/password', 'PerfilController@password')->name(('user.password'));
 
 
-    //FIN COMBO USUARIO
+      //FIN COMBO USUARIO
+
+      //COMBO SEDE
+    
+      Route::get('sede', 'SedeController@index')->name('sede.index');
+
+      //FIN COMBO SEDE
 
     });    
 
