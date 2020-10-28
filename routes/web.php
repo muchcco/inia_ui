@@ -93,6 +93,7 @@ Route::group(['middleware' => ['auth']], function () {
       //COMBO USUARIO
     
     Route::get('user', 'PerfilController@index')->name('user.index');
+    Route::post('user/store', 'PerfilController@store')->name(('user.store'));
 
 
     //FIN COMBO USUARIO

@@ -69,6 +69,24 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="panel">
+									<!-- mensjaje -->
+										@if(\Session::has('warnign'))
+										<div class=" alert alert-danger " style="margin-top: 1em;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										@endif
+										@if(\Session::has('success'))
+										<div class=" alert alert-success " style="margin-top: 1em;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+
+											<p> {{ \Session::get('success') }} </p>
+										</div>
+										@endif
+									{{-- fin de mensaje --}}
 									<div class="panel-heading">
 										<h3 class="panel-title">Editar Cuenta</h3>
 									</div>
@@ -76,30 +94,32 @@
 						
 									<!--Input Size-->
 									<!--===================================================-->
-									<form class="form-horizontal">
+									<form class="form-horizontal" action="{{route('intranet.user.store')}}"  method="post">
+
+             						    {{ csrf_field() }}
 										<div class="panel-body">
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nombre</label>
 												<div class="col-sm-6">
-													<input type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->name }} ">
+													<input name="name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->name }} " onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Apellidos</label>
 												<div class="col-sm-6">
-													<input type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->last_name }} ">
+													<input name="last_name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->last_name }} " onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Correo</label>
 												<div class="col-sm-6">
-													<input type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->email }} ">
+													<input name="email" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value=" {{ $update->email }} " onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Rol</label>
 												<div class="col-sm-6">
-													<select name="" id="" class="form-control sedes">
+													<select name="role_id" id="" class="form-control sedes">
 														<option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
 														@foreach ($roles as $rol)
 															<option value=" {{ $rol->id }} "> {{ $rol->descripcion }} </option>
@@ -110,7 +130,7 @@
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Sede</label>
 												<div class="col-sm-6">
-													<select name="" id="" class="form-control sedes">
+													<select name="id_sede" id="" class="form-control sedes">
 														<option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
 														@foreach ($sedes as $up)
 															<option value=" {{ $up->idsede }} "> {{ $up->denominacion }} </option>
@@ -122,8 +142,8 @@
 										<div class="panel-footer">
 											<div class="row">
 												<div class="col-sm-9 col-sm-offset-3">
-													<button class="btn btn-mint" type="submit">Login</button>
-													<button class="btn btn-warning" type="reset">Reset</button>
+													<button class="btn btn-mint" type="submit">Actualizar</button>
+													<button class="btn btn-warning" type="reset">Resetear</button>
 												</div>
 											</div>
 										</div>
@@ -178,6 +198,14 @@ $(document).ready(function () {
         $disabledResults.select2();
 })
         
+
+var MayusculaGuiones = (valor) => {
+	valor.value = valor.value.toUpperCase();
+	//valor.value = valor.value.replace(/\s/g,"");
+	console.log(valor);
+
+	//javascript:this.value=this.value.toUpperCase();
+}
         
 </script>
 

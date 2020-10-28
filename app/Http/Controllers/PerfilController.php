@@ -42,5 +42,15 @@ class PerfilController extends Controller
         return view('intranet.user.index', compact('usuario', 'update', 'sedes', 'roles'));
     }
 
+    public function store(Request $request)
+    {
+        $id = Auth()->user()->id;
+        
+        $updates = User::find($id);
+        $updates->update($request->all());
+
+        return back()->with('success', 'Sus datos fueron actualizados con exito..');
+    }
+
 
 }
