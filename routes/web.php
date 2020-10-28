@@ -102,6 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
       //COMBO SEDE
     
       Route::get('sede', 'SedeController@index')->name('sede.index');
+      Route::get('sede/{id}/edit', 'SedeController@edit')->name('sede.edit');
 
       //FIN COMBO SEDE
 

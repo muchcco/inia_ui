@@ -39,6 +39,17 @@ class SedeController extends Controller
 
         }
 
+       /// dd($sedes);
+
         return view('intranet.sede.index', compact('sedes'));
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $sedes = Sede::find($id);
+
+        //dd($sedes);
+
+        return view('intranet.sede.edit', compact('sedes'));
     }
 }

@@ -17,50 +17,37 @@
 			<div class="panel-body">
 				<div class="fixed-fluid">
 					<div class="fixed-md-300 pull-sm-left fixed-right-border">
-						@foreach( $usuario as $user )
-						<!-- Simple profile -->
-						<div class="text-center">
-							<div class="pad-ver">
-								<img src="{{ asset('img\profile-photos\1.png')}}" class="img-lg img-circle" alt="Profile Picture">
-							</div>
-							
-							<h4 class="text-lg text-overflow mar-no">  																
-									{{  $user->nombres }}								
-							</h4>
-							<p class="text-sm text-muted">{{  $user->denominacion }}	</p>
-							
-							<button class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#passwor_resed">CONTRASEÑA</button>
-						</div>
-						<hr>
-	
-						<!-- Profile Details -->
-						<p class="pad-ver text-main text-sm text-uppercase text-bold">Sobre Mi</p>
-						<p><i class="fa fa-user"></i> {{ $user->nombres }}</p>
-						<p><a href="#" class="btn-link"><i class="fa fa-at"></i>  {{ $user->email }} </a></p>
-						<p><i class="fa fa-map"></i> {{ $user->direccion }} </p>
-	
-	
-						<hr>
-						@if( auth()->user()->hasRoles(['admin']))
-							<p class="pad-ver text-main text-sm text-uppercase text-bold">Skills</p>
-							<ul class="list-inline">
-								<li class="tag tag-sm">{{  $user->rol_name }}</li>
-								<li class="tag tag-sm">{{  $user->denominacion }}</li>
-							</ul>
-						@endif
-						@if( auth()->user()->hasRoles(['user']))
-							<p class="pad-ver text-main text-sm text-uppercase text-bold">Skills</p>
-							<ul class="list-inline">
-								<li class="tag tag-sm">PHP Programming</li>
-								<li class="tag tag-sm">Marketing</li>
-								<li class="tag tag-sm">Graphic Design</li>
-								<li class="tag tag-sm">Sketch</li>
-								<li class="tag tag-sm">Photography</li>
-							</ul>
-						@endif
-						<hr>
+						
+                            <!-- Simple profile -->
+                            <div class="text-center">
+                                <div class="pad-ver">
+                                    <img src="{{ asset('img\profile-photos\1.png')}}" class="img-lg img-circle" alt="Profile Picture">
+                                </div>
+                                
+                                <h4 class="text-lg text-overflow mar-no">  																
+                                       {{ $sedes->denominacion }}  								
+                                </h4>
+                                
+                                <button class="btn btn-block btn-success btn-lg" data-toggle="modal" data-target="#passwor_resed">CONTRASEÑA</button>
+                            </div>
+                            <hr>
+        
+                            <!-- Profile Details -->
+                            <p class="pad-ver text-main text-sm text-uppercase text-bold">Sobre Mi</p>
+                            <p><i class="fa fa-user"></i> {{ $sedes->denominacion }}  </p>
+                            <p><i class="fa fa-map"></i> {{ $sedes->direccion }} </p>
+        
+        
+                            <hr>
+                                <p class="pad-ver text-main text-sm text-uppercase text-bold">Skills</p>
+                                <ul class="list-inline">
+                                    <li class="tag tag-sm">jj</li>
+                                    <li class="tag tag-sm">jj</li>
+                                </ul>
+                            
+                            <hr>
+                        
 					</div>
-					@endforeach
 					<div class="fluid">
 						<div class="row">
 							<div class="col-lg-6">
@@ -90,48 +77,26 @@
 						
 									<!--Input Size-->
 									<!--===================================================-->
-									<form class="form-horizontal" action="{{route('intranet.user.store')}}"  method="post">
+									<form class="form-horizontal" action=""  method="post">
 
              						    {{ csrf_field() }}
 										<div class="panel-body">
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Nombre</label>
 												<div class="col-sm-6">
-													<input name="name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->name }}" onkeyup="MayusculaGuiones(this)">
+													<input name="name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Apellidos</label>
 												<div class="col-sm-6">
-													<input name="last_name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->last_name }}" onkeyup="MayusculaGuiones(this)">
+													<input name="last_name" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 											<div class="form-group">
 												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Correo</label>
 												<div class="col-sm-6">
-													<input name="email" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="{{ $update->email }}" onkeyup="MayusculaGuiones(this)">
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Rol</label>
-												<div class="col-sm-6">
-													<select name="role_id" id="" class="form-control sedes">
-														<option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
-														@foreach ($roles as $rol)
-															<option value="{{ $rol->id }}"> {{ $rol->descripcion }} </option>
-														@endforeach
-													</select>													
-												</div>
-											</div>
-											<div class="form-group">
-												<label class="col-sm-3 control-label" for="demo-is-inputsmall">Sede</label>
-												<div class="col-sm-6">
-													<select name="id_sede" id="" class="form-control sedes">
-														<option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
-														@foreach ($sedes as $up)
-															<option value=" {{ $up->idsede }} "> {{ $up->denominacion }} </option>
-														@endforeach
-													</select>													
+													<input name="email" type="text" placeholder=".input-sm" class="form-control input-sm" id="demo-is-inputsmall" value="" onkeyup="MayusculaGuiones(this)">
 												</div>
 											</div>
 										</div>
@@ -139,7 +104,7 @@
 											<div class="row">
 												<div class="col-sm-9 col-sm-offset-3">
 													<button class="btn btn-mint" type="submit">Actualizar</button>
-													<button class="btn btn-warning" type="reset">Resetear</button>
+													<a href="{{ url('intranet/sede') }}" class="btn btn-warning" >Cancelar</a>
 												</div>
 											</div>
 										</div>
