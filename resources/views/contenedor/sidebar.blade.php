@@ -120,6 +120,13 @@
                                     <span class="menu-title">Usuarios</span>
                                 </a>
                             </li>
+
+                            <li class="@if (Request::is('intranet/sede')) active-sub @endif">
+                                <a href=" {{ route('intranet.sede.index') }} ">
+                                    <i class="fa fa-database text-orange"></i>
+                                    <span class="menu-title">Sedes</span>
+                                </a>
+                            </li>
                         @endif
 
                         <li class="@if (Request::is('intranet/user')) active-sub @endif">

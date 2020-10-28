@@ -52,9 +52,9 @@ class PerfilController extends Controller
         return back()->with('success', 'Sus datos fueron actualizados con exito..');
     }
 
-    public function password()
+    public function password(Request $request)
     {
-
+        
     }
 
 
