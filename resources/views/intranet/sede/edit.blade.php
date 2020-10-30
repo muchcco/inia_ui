@@ -120,15 +120,38 @@
 									<div class="panel-heading">
 										<h3 class="panel-title">Editar Imagen</h3>
 									</div>
+									<!-- mensjaje -->
+										@if(\Session::has('warnign'))
+										<div class=" alert alert-danger " style="margin-top: 1em;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										@endif
+										@if(\Session::has('image'))
+										<div class=" alert alert-success " style="margin-top: 1em;">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+
+											<p> {{ \Session::get('image') }} </p>
+										</div>
+										@endif
+									{{-- fin de mensaje --}}
 						
 									<!--No Label Form-->
 									<!--===================================================-->
-									<form class="form-horizontal">
-										<div class="panel-body">
-											
+									<form class="form-horizontal" method="POST" action="{{ route('intranet.sede.image', $sedes->idsede) }}" enctype="multipart/form-data">
+										{{ method_field('put') }}
+										{{ csrf_field() }}
+										<div class="panel-body">											
+											<img width="100px" src="{{ asset('/storage/'.$sedes->imagen)}}" alt="">
+										</div>	
+										<div class="panel-body">						
+											<input type="file" name="imagen">
 										</div>
 										<div class="panel-footer text-right">
-											<button class="btn btn-default">Send message</button>
+											<button class="btn btn-danger">Send message</button>
 										</div>
 									</form>
 									<!--===================================================-->

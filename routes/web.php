@@ -103,7 +103,7 @@ Route::group(['middleware' => ['auth']], function () {
     
       Route::get('sede', 'SedeController@index')->name('sede.index');
       Route::get('sede/{id}/edit', 'SedeController@edit')->name('sede.edit');
-
+      Route::put('sede/{id}', 'SedeController@image')->name('sede.image');
       //FIN COMBO SEDE
 
     });    
