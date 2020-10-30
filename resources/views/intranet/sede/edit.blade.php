@@ -145,10 +145,10 @@
 										{{ method_field('put') }}
 										{{ csrf_field() }}
 										<div class="panel-body">											
-											<img width="100px" src="{{ asset('/storage/'.$sedes->imagen)}}" alt="">
+											<img width="100px" src="{{ asset('/sedes/'.$sedes->imagen)}}" alt="">
 										</div>	
 										<div class="panel-body">						
-											<input type="file" name="imagen">
+                                            <input type="file" name="imagen" id="imagen" class=" btn btn-primary" value=""  onchange="uploadImage();" >
 										</div>
 										<div class="panel-footer text-right">
 											<button class="btn btn-danger">Send message</button>

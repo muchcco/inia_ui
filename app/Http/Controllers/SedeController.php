@@ -54,18 +54,18 @@ class SedeController extends Controller
        // dd($request->only('imagen'));
         //dd($request->file('imagen')->store('public'));
 
-        $images = Sede::find($id);
+        $images = Sede::FindOrFail($id);
         $images->imagen = $request->imagen;
-        if ($request->hasFile('archivo')){
-            $archivoIMG=$request->file('archivo');
+        if ($request->hasFile('imagen')){
+            $archivoIMG=$request->file('imagen');
             $nombreIMG=$archivoIMG->getClientOriginalName(); 
             $archivoIMG->move(public_path().'/sedes/', $nombreIMG);
 
         // esta es la línea que faltaba. Llamo a la foto del modelo y le asigno la foto recogida por el formulario de actualizar.          
-            $images->archivo=$nombreIMG; 
+            $images->imagen=$nombreIMG; 
         }
          
-        $images->update($request->only('imagen'));
+        $images->update();
 
        // dd($images);
 

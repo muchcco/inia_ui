@@ -11,4 +11,5 @@ class Sede extends Model
     protected $primaryKey = 'idsede';
 
     protected $fillable = [ 'id_user', 'denominacion', 'direccion', 'imagen' ];
+    public $timestamps = false;
 }
