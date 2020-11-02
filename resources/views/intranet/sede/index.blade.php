@@ -73,7 +73,7 @@
                                 </div>
                             </div>
                             <a href="#">
-                                <img alt="Profile Picture" class="img-lg img-circle mar-ver" src="img\profile-photos\2.png">
+                                <img alt="Profile Picture" class="img-lg img-circle mar-ver" src="{{ asset('/sedes/'.$sede->imagen)}}">
                                 <p class="text-lg text-semibold mar-no text-main"> {{ $sede->denominacion }} </p>
                                 <p class="text-sm">{{$sede->direccion}}</p>
                                 <p class="text-sm"></p>
