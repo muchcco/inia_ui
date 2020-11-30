@@ -14,7 +14,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">MIS DOCUMENTOS</h1>
+        <h1 class="page-header text-overflow">ALMACEN</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -24,7 +24,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
     <li><a href=" {{ url('/') }} "><i class="fas fa-home"></i></a></li>
-    <li><a href="#">Mis Archivos</a></li>
+    <li><a href="#">Mis productos</a></li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -36,7 +36,7 @@
     <!--===================================================-->
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Elija la carpeta donde guardará el archivo</h3>
+            <h3 class="panel-title">Ingrese un nuevo producto - (Este módulo se visualizara para el público)</h3>
         </div>
 
         <div id="demo-custom-toolbar2" class="table-toolbar-left" style="padding-left:1.5em;">

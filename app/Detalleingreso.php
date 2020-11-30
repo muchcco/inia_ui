@@ -11,5 +11,7 @@ class Detalleingreso extends Model
     protected $primaryKey = 'id_detalle_ingreso';
 
     
-    protected $fillable = [ 'id_ingreso', 'cantidad', 'precio' ];
+    protected $fillable = [ 'id_ingreso', 'id_almacen', 'id_catalogo',  'cantidad_muestra', 'precio' ];
+
+    public $timestamps = false;
 }

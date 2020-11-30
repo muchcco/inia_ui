@@ -64,7 +64,6 @@
                 <!--================================-->
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand">
-                        <img src="{{ asset('img\logo.png')}}" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
                             <span class="brand-text">INIA</span>
                         </div>

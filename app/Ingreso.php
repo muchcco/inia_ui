@@ -11,5 +11,5 @@ class Ingreso extends Model
     protected $primaryKey = 'id_ingreso';
 
     
-    protected $fillable = [ 'id_sede', 'id_proveedor' , 'id_catalogo', 'total_monto', 'monto', 'cantidad_muestra', 'fecha', 'estado', 'observacion' ];
+    protected $fillable = [ 'id_sede', 'id_proveedor' , 'id_catalogo', 'total_monto', 'monto', 'fecha', 'estado', 'observacion' ];
 }

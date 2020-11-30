@@ -86,4 +86,6 @@ class AlmacenController extends Controller
 
         return back()->with('success', 'todo ok..');
     }
+
+    
 }

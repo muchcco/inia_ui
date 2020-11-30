@@ -28,6 +28,17 @@ class ReporteController extends Controller
 
     function prueba(Request $request)
     {
+
+      $data = Ingreso::from('dbo_ingreso as i')
+                                ->select('s.denominacion',  't.nombre AS servicio' , 'st.nombre AS analisis', DB::raw('COUNT( st.nombre ) AS cantidad' )  , 'ca.caracteristica', DB::raw( 'SUM(i.precio) as precio' ) , DB::raw( 'COUNT( st.nombre ) * SUM(i.precio) as total' ))
+                                ->join('dbo_catalogo as ca', 'ca.id_catalogo', '=', 'i.id_catalogo')
+                                ->join('dbo_subtipo as st', 'st.id_subtipo', '=', 'ca.id_subtipo')
+                                ->join('dbo_tipo as t', 't.id_tipo', '=', 'st.id_tipo')
+                                ->join('sede as s', 's.idsede', '=', 'i.id_sede')
+                                ->whereBetween('i.fecha', array($request->from_date, $request->to_date))
+                                ->groupBy('s.denominacion', 't.nombre', 'st.nombre', 'ca.caracteristica')
+                                ->toSql();
+                        dd($data);
       if(request()->ajax())
       {
           if(!empty($request->from_date))

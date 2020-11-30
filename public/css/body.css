@@ -1,0 +1,29 @@
+.content{
+	background: #f1f1f1;
+	display: flex;
+	justify-content: center;
+}
+
+.b-sec{
+	background: #fff;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+}
+
+.section{
+	padding: 1em 0 1em 0;
+}
+
+
+.title{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+.cuadros-2{
+	width: 100%;
+	display: flex;
+	flex-flow: wrap-reverse;
+	justify-content: center;
+}

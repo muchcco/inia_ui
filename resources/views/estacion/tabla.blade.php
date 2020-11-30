@@ -5,19 +5,29 @@
  <!--DataTables [ OPTIONAL ]-->
  <link href="{{ asset('//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 
- 
+<style>
+    .table-body
+    {
+        width: 100%;
+        margin: 1.5em;
+    }
+</style>
 
 @endsection
 
-@section('content')
-<div class="row" style="margin: 0em 0em 1em 0em;">
+@section('back')
+<div class="" style="margin: 0em 0em 1em 0em;">
     <a href=" {{ route('welcome') }} " class="btn btn-success"><i class="far fa-arrow-alt-circle-left"></i> Regresar</a>
 </div>
-  
+  <br/>
+@endsection
+
+@section('content')
+
     
-<div class="row">
+<div class="table-body">
   
-    <table id="TableIngreso" class="table table-striped data-table" cellspacing="0" width="100%">
+    <table id="TableIngreso" class="tablee" cellspacing="0" width="100%">
         <thead>
             <tr>
                 <th></th>

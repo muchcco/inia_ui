@@ -49,7 +49,7 @@ class CatalogoController extends Controller
                     ->make(true);
             }
 
-
+            
         return view('intranet.catalogo.index');
     }
 

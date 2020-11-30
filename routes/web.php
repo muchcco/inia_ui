@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('almacen/subtipos', 'AlmacenController@subtipos')->name('almacen.subtipos');
       Route::get('almacen/subtiposca', 'AlmacenController@subtiposca')->name('almacen.subtiposca');
       Route::post('almacen/store', 'AlmacenController@store')->name('almacen.store');
+      Route::get('almacen/{id}/edit', 'AlmacenController@edit')->name('almacen.edit');
+      Route::put('almacen/{id}', 'AlmacenController@update')->name('almacen.update');
 
       //FIN COMBO ALMACEN
 
@@ -73,6 +75,8 @@ Route::group(['middleware' => ['auth']], function () {
       Route::get('ingreso/subtipos', 'IngresoController@subtipos')->name('ingreso.subtipos');
       Route::get('ingreso/subtiposca', 'IngresoController@subtiposca')->name('ingreso.subtiposca');
       Route::post('ingreso/store', 'IngresoController@store')->name('ingreso.store');
+      Route::get('ingreso/{id}/edit', 'IngresoController@edit')->name('ingreso.edit');
+      Route::put('ingreso/{id}', 'IngresoController@update')->name('ingreso.update');
       //FIN COMBO INGRESO
 
       //COMBO INGRESO

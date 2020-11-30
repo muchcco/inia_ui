@@ -14,7 +14,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">MIS DOCUMENTOS</h1>
+        <h1 class="page-header text-overflow">MIS INGRESOS</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -24,7 +24,7 @@
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
     <li><a href=" {{ url('/') }} "><i class="fas fa-home"></i></a></li>
-    <li><a href="#">Mis Archivos</a></li>
+    <li><a href="#">Mis Ingresos</a></li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -36,7 +36,7 @@
     <!--===================================================-->
     <div class="panel">
         <div class="panel-heading">
-            <h3 class="panel-title">Elija la carpeta donde guardará el archivo</h3>
+            <h3 class="panel-title">Ingresar nuevo registro</h3>
         </div>
 
         <div id="demo-custom-toolbar2" class="table-toolbar-left" style="padding-left:1.5em;">
@@ -49,13 +49,10 @@
             <table id="TableIngreso" class="table table-striped data-table" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Servicio</th>
-                        <th>Analisis</th>
-                        <th>Caracteristica</th>
-                        <th>cantidad de muestra</th>
-                        <th>Costo en S/.</th>
-                        <th>observación</th>
-                        <th>fecha</th>
+                        <th>Sede</th>
+                        <th>Proveedor</th>
+                        <th>observacion</th>
+                        <th>Fecha de Ingreso</th>
                         <th class="min-desktop">Acciones</th>
                     </tr>
                 </thead>
@@ -85,17 +82,15 @@
             ajax: "{{ route('intranet.ingreso.index') }}",
             type: 'GET',
             columns: [
-                {data: 'servicio', name: 'servicio'},
-                {data: 'analisis', name: 'analisis'},
-                {data: 'caracteristica', name: 'caracteristica'},
-                {data: 'cantidad_muestra', name: 'cantidad_muestra'},
-                {data: 'monto', name: 'monto'},
+                {data: 'denominacion', name: 'denominacion'},
+                {data: 'nombres', name: 'nombres'},
                 {data: 'observacion', name: 'observacion'},
                 {data: 'fecha', name: 'fecha'},
                 {data: 'action', name: 'action'},
             ]
         });
-        
+
+       
 
     });
 </script>

@@ -52,9 +52,7 @@
     
         <div class="row">
             @foreach($sedes as $sede)
-                <div class="col-sm-3 col-md-4">
-        
-        
+                <div class="col-sm-3 col-md-4">      
                     <!-- Contact Widget -->
                     <!---------------------------------->
                     <div class="panel pos-rel">
@@ -86,9 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <!---------------------------------->
-        
-                    
+                    <!---------------------------------->    
                 </div>
             @endforeach
         </div>

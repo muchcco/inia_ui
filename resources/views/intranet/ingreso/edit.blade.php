@@ -27,7 +27,7 @@
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <div id="page-title">
-        <h1 class="page-header text-overflow">NUEVO INGRESO</h1>
+        <h1 class="page-header text-overflow">MODIFICAR DATOS</h1>
     </div>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
@@ -36,8 +36,8 @@
     <!--Breadcrumb-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <ol class="breadcrumb">
-    <li><a href=" {{ url('intranet') }} "><i class="fas fa-home"></i></a></li>
-    <li><a href="{{ url('intranet/ingreso') }}">Lista de ingresos</a></li>
+    <li><a href=" {{ url('/') }} "><i class="fas fa-home"></i></a></li>
+    <li><a href="{{ url('intranet/ingreso') }}">Ingreso</a></li>
     </ol>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End breadcrumb-->
@@ -73,7 +73,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                    Nuevo ingreso</h3>
+                    Editar</h3>
                 </div>
 
                 <form class="form" action=" {{ route('intranet.ingreso.store') }} " method="post">
@@ -83,67 +83,35 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Proveedor:</label>
-                                    <select class="servicio form-control" name="id_proveedor" id="servicio">
-                                        <option value="" selected="selected" disabled="true">-- Seleccione una opción --</option>
-                                        @foreach( $proveedor as $pro )
-                                            <option value=" {{ $pro->id_proveedor }} "> {{ $pro->nombres }} </option>
-                                        @endforeach
+                                    @foreach ($ingresos as $ingreso)
+                                        <input type="text" name="id_proveedor" class="form-control" value="{{ $ingreso->nombres }}">
+                                    @endforeach                                   
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Sede:</label>
-                                    @foreach ($sedes as $sede)
-                                        <input type="id_sede" name="id_sede" class="form-control" value="{{ $sede->denominacion }}">
-                                    @endforeach
+                                    @foreach ($ingresos as $ingreso)
+                                        <input type="text" name="" class="form-control" value="{{ $ingreso->denominacion }}" disabled>
+                                    @endforeach  
                                     
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label class="control-label">Fecha: </label><br/>
-                                    <input type="text" name="fecha" class="form-control" value=" {{date('Y-m-d')}} ">
+                                    @foreach ($ingresos as $ingreso)
+                                        <input type="date" name="fecha" class="form-control" value="{{ $ingreso->fecha }}" >
+                                    @endforeach 
                                 </div>
                             </div>
                         </div>
-                        <h4>Detalle del Ingreso</h4><br/>
+                        <h4>Detalle de Ingreso</h4><br/>
                     
                         <div class="row center">
                            
                             <div class="col-sm-12 panel panel-body panel-primary">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="articulo">Artículo</label>
-                                        <select name="pid_articulo" id="pid_articulo" class="form-control selectpicker" data-live-search="true">
-                                                <option value="--- Selecciones una Opción ---" disabled="true" selected="true" required>--- Selecciones una Opción ---</option>
-                                                @foreach($tipos as $tipe)
-                                                    <option value="{{ $tipe->id_tipo }}">
-                                                        {{ $tipe->nombre }}
-                                                    </option>
-                                                @endforeach
-                                        </select>
-                                        </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="pcantidad">Cantidad</label>
-                                        <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="pprecio">Precio</label>
-                                        <input type="number" name="pmonto" id="pmonto" class="form-control" placeholder="Precio">
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <button type="button" id="bt_add" class="btn btn-primary">
-                                            Agregar
-                                        </button>
-                                    </div>
-                                </div>
         
                                 <div class="col-md-12">
                                     <table id="detalles" class="table table-striped table-bordered table-hover table-condensed" style="margin-top: 10px">
@@ -153,12 +121,15 @@
                                             <th>Cantidad</th>
                                             <th>Precio</th>
                                         </thead>
-                                        <tfoot>
-                                            <th>Total</th>
+                                        @foreach( $detalles as $detalle)
+                                        <tfoot>                                            
                                             <th></th>
-                                            <th></th>
+                                        <th> <input type="text" value="{{ $detalle->caracteristica }}" disabled> </th>
+                                            <th> <input type="text"  value="{{ $detalle->cantidad_muestra }}"> </th>
+                                            <th> <input type="text" value="{{ $detalle->precio }}"> </th>
                                             {{-- <th><h4 id="total">0.00</h4></th> --}}
                                         </tfoot>
+                                        @endforeach
                                         <tbody>
         
                                         </tbody>
@@ -202,68 +173,7 @@
 
 <script>
         
-        $(document).ready(function(){
-		$("#bt_add").click(function(){
-			agregar();
-		});
-	});
-
-	var cont = 0;
-	var total = 0;
-	var subtotal = [];
-
-	//Cuando cargue el documento
-	//Ocultar el botón Guardar
-	$("#guardar").hide();
-
-	function agregar(){
-		//Obtener los valores de los inputs
-		id_almacen = $("#pid_articulo").val();
-		articulo = $("#pid_articulo option:selected").text();
-		cantidad = $("#pcantidad").val();
-		precio = $("#pmonto").val();
-
-		//Validar los campos
-		if(id_almacen != "" && cantidad > 0 && precio != ""){
-
-			//subtotal array inicie en el indice cero
-
-			// total = total + precio[cont];
-
-			var fila = '<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn" onclick="eliminar('+cont+')"><i style="color: red;" class="fa fa-trash"></i></button></td><td><input type="hidden" name="id_almacen[]" value="'+id_almacen+'">'+articulo+'</td><td><input type="hidden" name="cantidad_muestra[]" value="'+cantidad+'">'+cantidad+'</td><td><input type="hidden" name="precio[]" value="'+precio+'">'+precio+'</td></tr>';
-
-			cont++;
-			limpiar();
-			$("#total").html("$" + total);
-			evaluar();
-			$("#detalles").append(fila);
-		}else{
-			alertify.alert('Faltan Datos', 'Necesita completar los campos requeridos!');
-		}
-	}
-
-	function limpiar(){
-		$("#pcantidad").val("");
-		$("#pmonto").val("");
-	}
-
-	//Muestra botón guardar
-	function evaluar(){
-		if(cantidad > 0){
-			$("#guardar").show();
-		}else{
-			$("#guardar").hide();
-		}
-	}
-
-	function eliminar(index){
-		total = total-subtotal[index];
-		$("#total").html("$" + total);
-		$("#fila" + index).remove();
-		evaluar();
-	}
-        
-        
+   
 </script>
 
 @endsection

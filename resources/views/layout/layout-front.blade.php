@@ -1,125 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>Servicios de los Laboratorios de Aguas y Suelos del Instituto Nacional de Innovación Agraria</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 
-    <link rel="canonical" href="{{ asset('https://getbootstrap.com/docs/4.5/examples/album/')}}">
-    @yield('estilo')
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')}}" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  @yield('estilo')
+	<link rel="stylesheet" href="{{ asset('css/front.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/body.css')}}">
+	<link rel="stylesheet" href="{{ asset('css/animation.css')}}">
 
-     <!--fontasowome Stylesheet [ REQUIRED ]-->
-     <link href="{{ asset('vendor/fontawesome/css/all.min.css')}}" rel="stylesheet">
-     <script src="{{ asset('vendor/fontawesome/js/all.min.js')}}"></script>
+	<style>
+		.logo-w-m{
+			width: 10%;
+			/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#aebcbf+0,6e7774+50,0a0e0a+51,0a0809+100;Black+Gloss */
+			background: #fff; /* Old browsers */
+			background: -moz-linear-gradient(-45deg,  #fff 0%, #fff 50%, #333 51%, #333 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(-45deg,  #fff 0%,#fff 50%,#333 51%,#333 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(135deg,  #fff 0%,#fff 50%,#333 51%,#333 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aebcbf', endColorstr='#333',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
-     
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+			margin:0;
+			padding: 0;
+		}
+		
+		.active{
+			background-color:rgb(0, 130, 59);
+			text-decoration: none;
+			color: #fff;
+		}
+		</style>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')}}" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-      .jumbotron{
-        background-image: url("{{ asset('img/img-soft.png')}}") ;
-        background-repeat: no-repeat;
-        background-position: center;
+<!--fontasowome Stylesheet [ REQUIRED ]-->
+<link href="{{ asset('vendor/fontawesome/css/all.min.css')}}" rel="stylesheet">
+<script src="{{ asset('vendor/fontawesome/js/all.min.js')}}"></script>
 
-      }
+	
+</head>
+<body>
+	<div class="header">
+		<div class="content-first">
+			<div class="body-head">
+				<ul class="h-ul">
+					<li class="h-li" >fone</li>
+					<li class="h-li" >direccion</li>
+					<li class="h-li" ><a href="{{ url('login') }}">Iniciar Sesión</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="content-logo">
+			<div class="logo-w">
+				<div class="img-dev">
+					<div class="img-h">
+						<img src="{{ asset('img/logo_minagri.png')}}" alt="" width="300">
+						<img src="{{ asset('img/logo_inia.png')}}" alt="" width="150">
+					</div>
+				</div>
+			</div>
+			<div class="logo-w-m">
+			</div>
+			<div class="logo-w black">
+				<div class="title-dev">
+					<h4>"Año de la Universalización de la Salud"</h4>
+				</div>
+			</div>
+		</div>
+		<div class="content-menu">
+			<div class="body">
+				<div class="menu-b">
+					<ul class="menu-list">
+						<li class="li-menu"><a class="active" href="">Inicio</a></li>
+						<li class="li-menu"><a href="">Contactanos</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
-      .album{
-        background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url("{{ asset('img/web-site.jpg')}}");
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
-  </head>
-  <body>
-    <header>
-      <!-- A grey horizontal navbar that becomes vertical on small screens -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Servicios de los Laboratorios de Aguas y Suelos del INIA</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <div class="form-inline my-2 my-lg-0">
-            <a href=" {{ url('login') }} " class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-lock"></i> INICIAR SESION</a>
-          </div>
-        </div>
-      </nav>
-</header>
+	<div class="content">
+		<div class="b-sec">
+			<div class="section">
+			</div>
 
-<main role="main">
+			<div class="section">
+				<div class="title">
+					<h2>Servicios de los Laboratorios de Aguas y Suelos del INIA</h2>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing, elit. Cupiditate ipsa, soluta a ullam nobis ut vero molestias dolore itaque deleniti architecto asperiores velit libero maxime reprehenderit accusamus, voluptas? Tempora, inventore!</p>
 
-  <section class="jumbotron text-center" >
-    <div class="container" style="height: 15em;">
-      <h1></h1>
-      <p class="lead text-muted"></p>
-      
-    </div>
-  </section>
+					@yield('back')
+				</div>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
+				<div class="cuadros-2">
+					
+					@yield('content')
+					
 
-        @yield('content')
-      
-    </div>
-  </div>
+				</div>	
+			</div>
+			
+		</div>
+	</div>
+    <script src="{{ asset('vendor/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')}}" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
-</main>
-
-<footer class="text-muted">
-  <div class="container">
-    <p class="float-right">
-      <a href="#">Subir</a>
-    </p>
-    <p>Instituto Nacional de Innovación Agraria &copy; 2020 - Unidad de Informática.</p>
-   
-  </div>
-</footer>
-<script src="{{ asset('vendor/js/jquery.min.js')}}"></script>
-<script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')}}" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
+    
 <!--Begin::style-->
 @yield('script')
 <!--End::style-->
+    <script>
+      /* Demo purposes only */
+      $(".hover").mouseleave(
+        function () {
+          $(this).removeClass("hover");
+        }
+      );
+    </script>
+</body>
 </html>
