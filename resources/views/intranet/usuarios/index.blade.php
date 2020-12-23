@@ -68,6 +68,9 @@ var agregarUsuario = () => {
     });
 };
 
+
+
+
 //EJECUTA EL BOTON GUARDAR DEL FORMULARIO
 $(document).on('click', '#btn_guardar_usuario', function(){
     var createForm = $("#UserForm");
@@ -82,6 +85,19 @@ $(document).on('click', '#btn_guardar_usuario', function(){
 
     });
 })
+
+// INHABILITAR USUARIOS 
+$('body').on('click', '#botonView', function () {
+            var entrega_id = $(this).data('id');
+            //console.log(entrega_id);
+
+            var ruta = ' {{ url('ingreso/entrega') }}/'+entrega_id;
+            console.log(ruta);
+            //window.location.href = ruta;
+            
+        });
+
+
 
 var MayusculaGuiones = (valor) => {
     valor.value = valor.value.toUpperCase();
@@ -125,6 +141,25 @@ var MayusculaGuiones = (valor) => {
     <!--End breadcrumb-->
 
 </div>
+
+ <!-- mensjaje -->
+ @if(\Session::has('warnign'))
+        <div class=" alert alert-danger " style="margin-top: 1em;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        @endif
+        @if(\Session::has('success'))
+        <div class=" alert alert-success " style="margin-top: 1em;">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+
+            <p> {{ \Session::get('success') }} </p>
+        </div>
+        @endif
+    {{-- fin de mensaje --}}
 
 <div id="page-content">
     <!-- Add Row -->

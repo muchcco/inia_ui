@@ -45,11 +45,11 @@ class UsuariosController extends Controller
          ->addIndexColumn()
          ->addColumn('action', function($row){
 
-                $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-default btn-sm editEntrega" id="botonEdit">No hay datos Disponobles</a>';
+                $btn = ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editEntrega" id="botonEdit">Editar</a>';
 
                 //$btn = $btn.' <a href="javascript:void(0)"  data-id="'.$row->id.'" data-original-title="Ver" class="ver btn btn-success btn-sm verDevolucion" id="botonView">Ver</a>';
 
-               // $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteEntrega">Eliminar</a>';
+                $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteEntrega">Eliminar</a>';
 
                  return $btn;
          })
@@ -94,8 +94,15 @@ class UsuariosController extends Controller
        }
 
        $response_data = User::create($input);
+
+       $responde_form = Response::json( $response_data )->with('succes', 'El usuario se registro adecuadamente...');
        //dd($response_data);
-       return Response::json( $response_data );
+       return $responde_form;
+    }
+
+    public function destroy( Request $request, $id)
+    {
+
     }
 
 
